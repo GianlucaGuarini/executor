@@ -9,19 +9,19 @@ import Control.Concurrent.Async (async, wait)
 -- | main = do
 -- |  execSync "ls"
 
-execSync :: String -> IO Bool
+execSync :: String -> IO()
 
 execSync c = do
   task <- async (callCommand c)
   res <- wait task
-  return True
+  return ()
 
 -- | Execute a list of shell commands in sequence synchronously
 -- | for example:
 -- | main = do
 -- |  execListSync ["ls", "whoami"]
 
-execListSync :: [String] -> IO Bool
+execListSync :: [String] -> IO()
 
 execListSync (c:commands) = do
   execSync c
@@ -29,4 +29,4 @@ execListSync (c:commands) = do
     then do
       execListSync commands
     else
-      return True
+      return ()

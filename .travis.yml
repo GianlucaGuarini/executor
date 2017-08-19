@@ -1,10 +1,7 @@
-language: c
+language: haskell
 sudo: false
 
-ghc: 7.10
-
-script:
-  make test
+ghc: 7.10.3
 
 notifications:
   email: false

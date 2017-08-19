@@ -1,7 +1,12 @@
+module Main where
 import Executor
+import System.Exit (exitFailure)
 
 main :: IO()
 main = do
   execSync "ls"
-  execListSync ["time", "whoami", "ls"]
-  return ()
+  execListSync [
+      "time",
+      "whoami",
+      "echo hello"
+    ]

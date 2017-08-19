@@ -1,8 +1,5 @@
-HC=ghc -O
-
 test: test.hs
-	@ $(HC) test.hs
-	@ ./test
+	@ cabal test
 
 clean:
 	rm -rf *.o *.hi test
