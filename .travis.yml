@@ -1,7 +1,7 @@
 language: haskell
 sudo: false
 
-ghc: 7.10.3
+ghc: 8.0.2
 
 notifications:
   email: false
