@@ -23,5 +23,5 @@ execSync c = do
 
 execListSync :: [String] -> IO()
 
-execListSync (c:commands) = do
+execListSync commands = do
   mapM_ execSync commands
