@@ -1,5 +1,5 @@
 name:                executor
-version:             0.0.1
+version:0.0.2
 description:         Haskell module to execute single or multiple shell commands
 synopsis:            Shell helpers
 homepage:            https://github.com/GianlucaGuarini/executor
