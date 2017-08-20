@@ -1,4 +1,4 @@
-module Executor where
+module Executor (execSync, execListSync) where
 
 import System.Process (callCommand)
 import Control.Concurrent.Async (async, wait)
@@ -13,8 +13,7 @@ execSync :: String -> IO()
 
 execSync c = do
   task <- async (callCommand c)
-  res <- wait task
-  return res
+  wait task
 
 -- | Execute a list of shell commands in sequence synchronously
 -- for example:
@@ -23,5 +22,4 @@ execSync c = do
 
 execListSync :: [String] -> IO()
 
-execListSync commands = do
-  mapM_ execSync commands
+execListSync commands = do mapM_ execSync commands
