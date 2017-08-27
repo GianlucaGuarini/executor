@@ -15,7 +15,7 @@ import Executor (exec)
 
 main = do
   -- execute a simple `ls` in the current folder
-  res <- execSync "echo hi"
+  res <- exec "echo hi"
   -- hi\n
 ```
 
@@ -28,7 +28,7 @@ import Executor (execSequenceSync)
 
 main = do
   -- execute synchronously the following commands
-  res <- execListSync [
+  res <- execSequenceSync [
       "echo hi",
       "sleep 1",
       "echo goodbye"
