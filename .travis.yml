@@ -1,6 +1,8 @@
 language: c
 sudo: false
 
+notifications:
+  email: false
 
 # Caching so the next build will be fast too.
 cache:
@@ -22,3 +24,4 @@ script: stack --no-terminal --install-ghc test --haddock
 cache:
   directories:
   - $HOME/.stack
+  - $HOME/.cabal

@@ -2,7 +2,17 @@ module Executor (execSync, exec, execSequenceSync, execListSync) where
 
 import System.Process (readProcess)
 
-import Helpers (split)
+-- | Simple split a string using a delimiter
+-- for example:
+-- split "foo bar" " " will return ["foo", "bar"]
+split' :: String -> Char -> [String]
+split' [] _ = [""]
+split' (c:cs) delimiter
+   | c == delimiter = "" : rest
+   | otherwise = (c : head rest) : tail rest
+   where
+       rest = split' cs delimiter
+
 
 -- | Alias for exec
 execSync :: String -> IO String
@@ -20,7 +30,7 @@ execListSync = execSequenceSync
 exec :: String -> IO String
 exec c =  readProcess command arguments []
             where
-              commandList = split c ' '
+              commandList = split' c ' '
               command = head commandList
               arguments = tail commandList
 

@@ -31,7 +31,6 @@ Test-Suite doctest
 
 library
   exposed-modules:   Executor
-  other-modules:     Helpers
   default-language:  Haskell2010
   build-depends:     base >=4.9 && <4.10, process >=1.4 && <1.5, async >=2.1 && <2.2
   hs-source-dirs:    src
