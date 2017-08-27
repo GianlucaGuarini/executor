@@ -1,4 +1,4 @@
-language: haskell
+language: c
 sudo: false
 
 
@@ -7,20 +7,21 @@ cache:
   directories:
   - $HOME/.stack
 
-ghc: 8.0.2
-
-install:
-  - stack setup
-  - stack install
+script:
+  - stack --no-terminal --skip-ghc-check test
 
 before_install:
-  # Download and unpack the stack executable
+# Download and unpack the stack executable
   - mkdir -p ~/.local/bin
   - export PATH=$HOME/.local/bin:$PATH
   - travis_retry curl -L https://www.stackage.org/stack/linux-x86_64 | tar xz --wildcards --strip-components=1 -C ~/.local/bin '*/stack'
 
-script:
-  - stack --no-terminal --skip-ghc-check test
+# This line does all of the work: installs GHC if necessary, build the library,
+# executables, and test suites, and runs the test suites. --no-terminal works
+# around some quirks in Travis's terminal implementation.
+script: stack --no-terminal --install-ghc test --haddock
 
-notifications:
-  email: false
+# Caching so the next build will be fast too.
+cache:
+  directories:
+  - $HOME/.stack
