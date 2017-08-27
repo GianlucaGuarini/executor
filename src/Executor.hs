@@ -28,7 +28,7 @@ exec c =  readProcess command arguments []
 -- for example:
 --
 -- >>> execSequenceSync ["echo hi", "sleep 1", "echo goodbye"]
--- ["hi\n", "", "goodbye\n"]
+-- ["hi\n","","goodbye\n"]
 --
 execSequenceSync :: [String] -> IO [String]
 execSequenceSync = mapM execSync

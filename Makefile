@@ -1,19 +1,16 @@
 VERSION:=$(v)
 
 test: test/Spec.hs
-	@ cabal test
+	@ stack test
 
 clean:
-	@ cabal clean
+	@ stack clean
 	@ rm -rf **/*.o **/*.hi
-
-install:
-	@ cabal install hspec doctest
 
 release:
 	@ sed -i '' 's/\(^version:\)[^\n].*/\1'$(VERSION)'/' *.cabal
-	@ cabal sdist
-	@ cabal check
-	@ cabal upload $(shell find dist/*$(VERSION).tar.gz)
+	@ stack sdist
+	@ stack check
+	@ stack upload $(shell find dist/*$(VERSION).tar.gz)
 
 .PHONY: test clean
