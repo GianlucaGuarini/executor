@@ -3,5 +3,9 @@ sudo: false
 
 ghc: 8.0.2
 
+
+before_install:
+  make install
+
 notifications:
   email: false

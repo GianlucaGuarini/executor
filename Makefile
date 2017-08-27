@@ -1,10 +1,14 @@
 VERSION:=$(v)
 
-test: test.hs
+test: test/Spec.hs
 	@ cabal test
 
 clean:
-	@ rm -rf *.o *.hi test
+	@ cabal clean
+	@ rm -rf **/*.o **/*.hi
+
+install:
+	@ cabal install hspec doctest
 
 release:
 	@ sed -i '' 's/\(^version:\)[^\n].*/\1'$(VERSION)'/' *.cabal

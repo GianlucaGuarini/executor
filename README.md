@@ -6,32 +6,34 @@ Haskell module to execute single or multiple shell commands
 
 # API
 
-## execSync
+## exec
 
-Execute a single shell command
+Execute a single shell command returning its output
 
 ```hs
-import Executor (execSync)
+import Executor (exec)
 
 main = do
   -- execute a simple `ls` in the current folder
-  execSync "ls"
+  res <- execSync "echo hi"
+  -- hi\n
 ```
 
-## execListSync
+## execSequenceSync
 
-Execute a list of shell commands in sequence synchronously
+Execute a list of shell commands in sequence synchronously returning their results in a list
 
 ```hs
-import Executor (execListSync)
+import Executor (execSequenceSync)
 
 main = do
   -- execute synchronously the following commands
-  execListSync [
-      "ls",
-      "whoami",
-      "echo hello"
+  res <- execListSync [
+      "echo hi",
+      "sleep 1",
+      "echo goodbye"
     ]
+  -- ["hi\n", "", "goodbye\n"]
 ```
 
 [travis-image]:https://img.shields.io/travis/GianlucaGuarini/executor.svg?style=flat-square
